@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-    /* ...existing code... */
 #particles-js {
   position: fixed;
   top: 0;
@@ -215,23 +214,6 @@ section {
 
 .hero h2 {
   font-size: 3rem;
-}
-.hero h3 {
-  min-height: 150vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  font-size: 3rem;
-}
-
-.hero p1 {
-  margin-top: 10px;
-}
-.hero p2 {
-  margin: 10px;
 }
 /* SERVICES */
 .services {
