@@ -2,10 +2,12 @@ from flask import Flask, render_template, request, send_file, abort
 import pandas as pd
 from datetime import datetime
 import os
+import tempfile
+from werkzeug.utils import secure_filename
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_DIR = os.path.normpath(os.path.join(BASE_DIR, "..", "frontend"))
-UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
+UPLOAD_FOLDER = os.path.join(tempfile.gettempdir(), "ss-solutions-uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app = Flask(
@@ -75,7 +77,8 @@ def tally():
         if file is None or not file.filename:
             abort(400, description="Please choose an Excel file to convert.")
 
-        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(UPLOAD_FOLDER, filename)
         file.save(filepath)
 
         df = pd.read_excel(filepath)
