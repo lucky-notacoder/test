@@ -7,3 +7,9 @@ dist/
 build/
 .env
 frontend/.git_backup_codex/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
